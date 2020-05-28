@@ -1,0 +1,96 @@
+﻿@model MebelT.Order
+
+@{
+    ViewBag.Title = "Удалить";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы уверены что хотите сделать это?</h3>
+<div>
+    <h4>Заказ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Номер заказа")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Дата заказа")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Дата сдачи")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Completion_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Материал")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material.Material_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Мебель")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mebel.Mebel_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Цена за ед товара")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price_for_one)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Количество")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Общая стоимость")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Клиент")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

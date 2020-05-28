@@ -1,0 +1,106 @@
+﻿@model MebelT.Order
+
+@{
+    ViewBag.Title = "Новый заказ";
+}
+
+<h2>Новый заказ</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Заказ</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+
+    <div class="form-group">
+        @Html.DisplayName("Дата заказа")
+        <p></p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Order_date, new { htmlAttributes = new { @class = "form-control", @id = "datepicker" } })
+            @Html.ValidationMessageFor(model => model.Order_date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayName("Мебель")
+        <p></p>
+        <div class="col-md-10">
+            @Html.DropDownList("Mebel_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Mebel_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayName("Материал")
+        <p></p>
+        <div class="col-md-10">
+            @Html.DropDownList("Material_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Material_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayName("Дата сдачи")
+        <p></p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Completion_date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Completion_date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayName("Цена за ед товара")
+        <p></p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Price_for_one, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Price_for_one, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayName("Количество")
+        <p></p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayName("Общая стоимость")
+        <p></p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Total_price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Total_price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayName("Клиент")
+        <p></p>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Client, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Client, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Создать" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

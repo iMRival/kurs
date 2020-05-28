@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MebelT.Order>
+
+@{
+    ViewBag.Title = "Заказы";
+}
+
+<h2>Заказы</h2>
+
+<p>
+    @Html.ActionLink("Новый заказ", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Номер")
+        </th>
+        <th>
+            @Html.DisplayName("Дата заказа")
+        </th>
+        <th>
+            @Html.DisplayName("Дата сдачи")
+        </th>
+        <th>
+            @Html.DisplayName("Материал")
+        </th>
+        <th>
+            @Html.DisplayName("Мебель")
+        </th>
+        <th>
+            @Html.DisplayName("Цена за 1 единицу")
+        </th>
+        <th>
+            @Html.DisplayName("Количество")
+        </th>
+        <th>
+            @Html.DisplayName("Итоговая стоимость")
+        </th>
+        <th>
+            @Html.DisplayName("Клиент")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Completion_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material.Material_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mebel.Mebel_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price_for_one)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id = item.Order_id }) |
+            @Html.ActionLink("Детали", "Details", new { id = item.Order_id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Order_id }) |
+            @Html.ActionLink("Чек", "Cheque", new { id = item.Order_id }, new { type = "file" })
+        </td>
+    </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Отчет","Report")
+</p>
